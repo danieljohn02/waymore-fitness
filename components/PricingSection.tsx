@@ -233,7 +233,7 @@ function PricingCard({
 
       {/* CTA */}
       <Link
-        href={`/pricing?plan=${slug}`}
+        href="/pricing"
         className={featured ? "btn btn-primary" : "btn btn-outline"}
         style={{ textAlign: "center", fontSize: 11, padding: "9px 14px" }}
       >

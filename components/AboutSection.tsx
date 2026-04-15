@@ -276,10 +276,10 @@ export default function AboutSection() {
           </div>
 
           <a
-            href="#contact"
+            href="#pricing"
             onClick={(e) => {
               e.preventDefault();
-              document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+              document.querySelector("#pricing")?.scrollIntoView({ behavior: "smooth" });
             }}
             className="btn btn-primary"
           >

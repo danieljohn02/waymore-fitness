@@ -29,6 +29,7 @@ export default function HeroSection() {
     >
       {/* 2x2 Mosaic Background */}
       <div
+        className="hero-mosaic"
         style={{
           position: "absolute",
           inset: 0,

@@ -13,9 +13,9 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <TickerStrip />
+      <AboutSection />
       <PricingSection />
       <ClassesSection />
-      <AboutSection />
       <ContactSection />
       <Footer />
     </>

@@ -34,6 +34,7 @@ export default function AboutSection() {
     >
       {/* Diagonal top cut (opposite direction) */}
       <div
+        className="diagonal-cut"
         style={{
           position: "absolute",
           top: 0,
@@ -96,6 +97,7 @@ export default function AboutSection() {
 
           {/* Stats overlay card */}
           <motion.div
+            className="about-stats-overlay"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.4 }}

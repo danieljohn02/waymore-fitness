@@ -288,25 +288,12 @@ export default function PricingSection() {
     <section
       id="pricing"
       style={{
-        background: "var(--surface)",
+        background: "var(--black)",
         position: "relative",
         padding: "96px 0",
         overflow: "hidden",
       }}
     >
-      {/* Diagonal top cut */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 80,
-          background: "var(--black)",
-          clipPath: "polygon(0 0, 100% 0, 100% 0, 0 100%)",
-        }}
-      />
-
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 56 }}>

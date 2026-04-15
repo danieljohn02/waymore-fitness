@@ -211,6 +211,7 @@ export default function ClassesSection() {
 
                 {/* Meta */}
                 <div
+                  className="class-meta"
                   style={{
                     display: "flex",
                     gap: 20,
@@ -284,6 +285,7 @@ export default function ClassesSection() {
           >
             {/* Schedule header */}
             <div
+              className="schedule-header"
               style={{
                 padding: "28px 32px",
                 borderBottom: "1px solid var(--border)",
@@ -318,7 +320,7 @@ export default function ClassesSection() {
                 >
                   Full Schedule →
                 </Link>
-              <div style={{ display: "flex", gap: 8 }}>
+              <div className="month-tabs" style={{ display: "flex", gap: 8 }}>
                 {(Object.keys(scheduleData) as Month[]).map((month) => (
                   <button
                     key={month}

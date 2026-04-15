@@ -16,8 +16,8 @@ const navLinks: NavLink[] = [
   { label: "About",    href: "#about",    type: "scroll" },
   { label: "Pricing",  href: "#pricing",  type: "scroll" },
   { label: "Classes",  href: "#classes",  type: "scroll" },
+  { label: "Calendar", href: "#calendar", type: "scroll" },
   { label: "Contact",  href: "#contact",  type: "scroll" },
-  { label: "Calendar", href: "/schedule", type: "page"   },
 ];
 
 export default function Navigation() {
@@ -66,19 +66,15 @@ export default function Navigation() {
   const linkHoverColor = dark ? "var(--white)" : "#FFFFFF";
 
   const renderDesktopLink = (link: NavLink) => {
-    const isCalendar = link.label === "Calendar";
     const style: React.CSSProperties = {
       fontFamily: "var(--font-body)",
       fontSize: 12,
       fontWeight: 600,
       letterSpacing: "0.1em",
       textTransform: "uppercase",
-      color: isCalendar ? "var(--orange)" : linkColor,
+      color: linkColor,
       textDecoration: "none",
       transition: "color 0.2s",
-      padding: isCalendar ? "6px 14px" : undefined,
-      border: isCalendar ? "1px solid rgba(248,92,27,0.35)" : undefined,
-      borderRadius: isCalendar ? 6 : undefined,
     };
 
     if (link.type === "page") {
@@ -115,7 +111,7 @@ export default function Navigation() {
       padding: "14px 0",
       fontFamily: "var(--font-display)",
       fontSize: 26,
-      color: link.label === "Calendar" ? "var(--orange)" : "var(--white)",
+      color: "var(--white)",
       textDecoration: "none",
       letterSpacing: "0.04em",
       borderBottom: "1px solid var(--border)",

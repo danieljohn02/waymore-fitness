@@ -629,7 +629,7 @@ export default function SchedulePage() {
               </div>
 
               {/* Table */}
-              <div style={{ overflowX: "auto" }}>
+              <div className="schedule-table-wrap" style={{ overflowX: "auto" }}>
                 <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 600 }}>
                   <tbody>
                     {Object.entries(weeklySchedule).map(([day, items], i, arr) => (
@@ -822,6 +822,13 @@ export default function SchedulePage() {
         @media (max-width: 900px) {
           .schedule-grid {
             grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .schedule-table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            max-width: 100%;
           }
         }
       `}</style>

@@ -136,7 +136,7 @@ export default function ClassesSection() {
               }}
             >
               {/* Image */}
-              <div style={{ position: "relative", height: 200, overflow: "hidden" }}>
+              <div className="class-card-img" style={{ position: "relative", height: 200, overflow: "hidden" }}>
                 <img
                   src={cls.image}
                   alt={cls.name}
@@ -164,7 +164,7 @@ export default function ClassesSection() {
               </div>
 
               {/* Body */}
-              <div style={{ padding: "24px 24px 28px" }}>
+              <div className="class-card-body" style={{ padding: "24px 24px 28px" }}>
                 {/* Type badge */}
                 <span
                   style={{

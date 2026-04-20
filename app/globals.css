@@ -39,6 +39,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 /* Anchor scroll offset */
@@ -237,6 +242,11 @@ body {
     max-height: 320px;
   }
 
+  /* Prevent horizontal overflow from tables */
+  #classes {
+    overflow: hidden !important;
+  }
+
   /* Schedule table: tighter padding */
   #classes table td {
     padding: 12px 16px !important;
@@ -270,6 +280,25 @@ body {
   #classes .class-meta {
     flex-direction: column !important;
     gap: 8px !important;
+  }
+
+  /* Class cards: compress vertically on mobile */
+  #classes .class-card-img {
+    height: 140px !important;
+  }
+
+  #classes .class-card-body {
+    padding: 16px 18px 20px !important;
+  }
+
+  #classes .class-card-body h3 {
+    font-size: 24px !important;
+    margin-bottom: 6px !important;
+  }
+
+  #classes .class-card-body p {
+    font-size: 12px !important;
+    margin-bottom: 14px !important;
   }
 
   /* Contact: form first on mobile */

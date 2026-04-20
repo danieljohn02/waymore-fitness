@@ -425,16 +425,15 @@ export default function PricingSection() {
           }
         }
         @media (max-width: 768px) {
+          #pricing {
+            overflow: hidden !important;
+          }
           .pricing-scroll-row {
             display: flex;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            padding-bottom: 20px;
-            margin-left: -24px;
-            margin-right: -24px;
-            padding-left: 24px;
-            padding-right: 24px;
+            padding-bottom: 8px;
             gap: 12px;
             scrollbar-width: none;
             -ms-overflow-style: none;
@@ -447,10 +446,8 @@ export default function PricingSection() {
             max-width: 280px;
             flex-shrink: 0;
             scroll-snap-align: start;
-          }
-          /* Scroll fade hint on the right edge */
-          .pricing-scroll-wrap {
-            position: relative;
+            transform: none !important;
+            opacity: 1 !important;
           }
           .pricing-scroll-row::after {
             content: '';

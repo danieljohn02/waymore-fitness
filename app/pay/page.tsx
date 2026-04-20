@@ -169,6 +169,7 @@ function StepIndicator({ step }: { step: number }) {
                 {isDone ? <i className="fa-solid fa-check" style={{ fontSize: 10 }} /> : i + 1}
               </div>
               <span
+                className="step-label"
                 style={{
                   fontSize: 11,
                   fontWeight: isActive ? 700 : 500,
@@ -784,7 +785,7 @@ function PayContent() {
                 {/* ════════════════ STEP 1: Personal Info ════════════════ */}
                 {step === 1 && (
                   <>
-                    <div style={sectionCardStyle}>
+                    <div className="pay-section-card" style={sectionCardStyle}>
                       <h3 style={sectionHeadingStyle}>ABOUT YOU</h3>
                       <div className="form-row">
                         <div>
@@ -824,7 +825,7 @@ function PayContent() {
                       </div>
                     </div>
 
-                    <div style={sectionCardStyle}>
+                    <div className="pay-section-card" style={sectionCardStyle}>
                       <h3 style={sectionHeadingStyle}>YOUR ADDRESS</h3>
                       <div style={{ marginBottom: 16 }}>
                         <label style={labelStyle}>Street Address *</label>
@@ -856,7 +857,7 @@ function PayContent() {
 
                 {/* ════════════════ STEP 2: Emergency Contact ════════════════ */}
                 {step === 2 && (
-                  <div style={sectionCardStyle}>
+                  <div className="pay-section-card" style={sectionCardStyle}>
                     <h3 style={sectionHeadingStyle}>EMERGENCY CONTACT</h3>
                     <p style={{ fontSize: 13, color: "var(--text)", lineHeight: 1.6, marginBottom: 24 }}>
                       Please provide someone we can reach in case of an emergency during your time at the gym.
@@ -893,11 +894,12 @@ function PayContent() {
 
                 {/* ════════════════ STEP 3: Terms & Conditions ════════════════ */}
                 {step === 3 && (
-                  <div style={sectionCardStyle}>
+                  <div className="pay-section-card" style={sectionCardStyle}>
                     <h3 style={sectionHeadingStyle}>TERMS &amp; CONDITIONS</h3>
 
                     {/* Scrollable terms box */}
                     <div
+                      className="terms-box"
                       style={{
                         background: "#FAFAF8",
                         border: "1px solid var(--border)",
@@ -1037,7 +1039,7 @@ function PayContent() {
 
                 {/* ════════════════ STEP 4: Payment ════════════════ */}
                 {step === 4 && (
-                  <div style={sectionCardStyle}>
+                  <div className="pay-section-card" style={sectionCardStyle}>
                     <div
                       style={{
                         display: "flex",
@@ -1094,6 +1096,7 @@ function PayContent() {
                     </div>
 
                     <div
+                      className="pay-card-row"
                       style={{
                         display: "grid",
                         gridTemplateColumns: "1fr 1fr 1fr",
@@ -1207,6 +1210,24 @@ function PayContent() {
         @media (max-width: 900px) {
           section .container > div[style*="grid-template-columns: 1fr 1.4fr"] {
             grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 768px) {
+          /* Step indicator: hide labels, show numbers only */
+          .step-label {
+            display: none !important;
+          }
+          /* Stack card number fields */
+          .pay-card-row {
+            grid-template-columns: 1fr !important;
+          }
+          /* Ensure form cards don't overflow */
+          .pay-section-card {
+            padding: 20px 16px !important;
+          }
+          /* Terms box: shorter on mobile */
+          .terms-box {
+            max-height: 200px !important;
           }
         }
       `}</style>

@@ -358,7 +358,7 @@ const faqs = [
 
 function SectionDivider({ label }: { label: string }) {
   return (
-    <div style={{ marginBottom: 32, marginTop: 56 }}>
+    <div style={{ marginBottom: 32, marginTop: 56, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
       <div
         style={{
           display: "inline-flex",
@@ -382,6 +382,19 @@ function SectionDivider({ label }: { label: string }) {
           {label}
         </span>
       </div>
+      <span
+        className="detail-swipe-hint"
+        style={{
+          display: "none",
+          alignItems: "center",
+          gap: 6,
+          fontSize: 11,
+          color: "var(--muted)",
+          fontWeight: 500,
+        }}
+      >
+        Swipe <i className="fa-solid fa-arrow-right" style={{ fontSize: 9 }} />
+      </span>
     </div>
   );
 }
@@ -731,13 +744,7 @@ export default function PricingPage() {
             Custom programming, progress tracking, and consistent coaching
             every week.
           </p>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-              gap: 24,
-            }}
-          >
+          <div className="detail-scroll-row">
             {ptMemberships.map((plan) => (
               <DetailCard key={plan.name} plan={plan} />
             ))}
@@ -761,13 +768,7 @@ export default function PricingPage() {
             Monthly class subscriptions for HIIT, Zumba, Pilates, Cardio Tae
             Boxing, and more. Pick the frequency that fits your life.
           </p>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: 24,
-            }}
-          >
+          <div className="detail-scroll-row">
             {classPlans.map((plan) => (
               <DetailCard key={plan.name} plan={plan} />
             ))}
@@ -791,13 +792,7 @@ export default function PricingPage() {
             One-time purchases with no recurring charges. Use sessions on your
             own schedule within the validity period.
           </p>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: 24,
-            }}
-          >
+          <div className="detail-scroll-row">
             {trainingPackages.map((plan) => (
               <DetailCard key={plan.name} plan={plan} />
             ))}
@@ -821,13 +816,7 @@ export default function PricingPage() {
             Bulk class packs, extended training packages, and long-term
             nutrition coaching for members who want maximum value.
           </p>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: 24,
-            }}
-          >
+          <div className="detail-scroll-row">
             {additionalPlans.map((plan) => (
               <DetailCard
                 key={plan.name}
@@ -1032,6 +1021,44 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
+
+      {/* Pricing page responsive */}
+      <style>{`
+        .detail-scroll-row {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 24px;
+        }
+        @media (max-width: 768px) {
+          .detail-scroll-row {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 8px;
+            gap: 14px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          .detail-scroll-row::-webkit-scrollbar {
+            display: none;
+          }
+          .detail-scroll-row > * {
+            min-width: 280px;
+            max-width: 300px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+          }
+          .detail-scroll-row::after {
+            content: '';
+            min-width: 1px;
+            flex-shrink: 0;
+          }
+          .detail-swipe-hint {
+            display: inline-flex !important;
+          }
+        }
+      `}</style>
 
       <Footer />
     </>

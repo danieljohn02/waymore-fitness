@@ -252,31 +252,46 @@ function RowLabel({ label, index }: { label: string; index: number }) {
       transition={{ duration: 0.4, delay: index * 0.1 }}
       viewport={{ once: true, margin: "-60px" }}
       style={{
-        display: "inline-flex",
+        display: "flex",
         alignItems: "center",
-        gap: 10,
+        justifyContent: "space-between",
         marginBottom: 16,
       }}
     >
-      <div
-        style={{
-          width: 20,
-          height: 2,
-          background: "var(--grad)",
-          borderRadius: 1,
-        }}
-      />
+      <div style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+        <div
+          style={{
+            width: 20,
+            height: 2,
+            background: "var(--grad)",
+            borderRadius: 1,
+          }}
+        />
+        <span
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 11,
+            fontWeight: 600,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            color: "var(--orange)",
+          }}
+        >
+          {label}
+        </span>
+      </div>
       <span
+        className="swipe-hint"
         style={{
-          fontFamily: "var(--font-body)",
+          display: "none",
+          alignItems: "center",
+          gap: 6,
           fontSize: 11,
-          fontWeight: 600,
-          letterSpacing: "0.14em",
-          textTransform: "uppercase",
-          color: "var(--orange)",
+          color: "var(--muted)",
+          fontWeight: 500,
         }}
       >
-        {label}
+        Swipe <i className="fa-solid fa-arrow-right" style={{ fontSize: 9 }} />
       </span>
     </motion.div>
   );
@@ -329,14 +344,7 @@ export default function PricingSection() {
 
         {/* ── ROW 1: Memberships ──────────────────────── */}
         <RowLabel label="Personal Training Memberships" index={0} />
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 16,
-            marginBottom: 36,
-          }}
-        >
+        <div className="pricing-scroll-row pricing-row-3" style={{ marginBottom: 36 }}>
           {memberships.map((plan, i) => (
             <PricingCard key={plan.name} {...plan} index={i} />
           ))}
@@ -344,14 +352,7 @@ export default function PricingSection() {
 
         {/* ── ROW 2: Classes ──────────────────────────── */}
         <RowLabel label="Group Classes" index={1} />
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 16,
-            marginBottom: 36,
-          }}
-        >
+        <div className="pricing-scroll-row pricing-row-3" style={{ marginBottom: 36 }}>
           {classPlans.map((plan, i) => (
             <PricingCard key={plan.name} {...plan} index={i} />
           ))}
@@ -359,14 +360,7 @@ export default function PricingSection() {
 
         {/* ── ROW 3: Packages ─────────────────────────── */}
         <RowLabel label="Packages &amp; Sessions" index={2} />
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: 16,
-            marginBottom: 36,
-          }}
-        >
+        <div className="pricing-scroll-row pricing-row-4" style={{ marginBottom: 36 }}>
           {packages.map((plan, i) => (
             <PricingCard key={plan.name} {...plan} index={i} />
           ))}
@@ -415,20 +409,56 @@ export default function PricingSection() {
 
       {/* Responsive overrides */}
       <style>{`
+        .pricing-scroll-row {
+          display: grid;
+          gap: 16px;
+        }
+        .pricing-row-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .pricing-row-4 {
+          grid-template-columns: repeat(4, 1fr);
+        }
         @media (max-width: 1024px) {
-          #pricing [style*="grid-template-columns: repeat(4"] {
-            grid-template-columns: repeat(2, 1fr) !important;
+          .pricing-row-4 {
+            grid-template-columns: repeat(2, 1fr);
           }
         }
         @media (max-width: 768px) {
-          #pricing [style*="grid-template-columns: repeat(2"] {
-            grid-template-columns: 1fr !important;
+          .pricing-scroll-row {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 20px;
+            margin-left: -24px;
+            margin-right: -24px;
+            padding-left: 24px;
+            padding-right: 24px;
+            gap: 12px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
           }
-          #pricing [style*="grid-template-columns: repeat(3"] {
-            grid-template-columns: 1fr !important;
+          .pricing-scroll-row::-webkit-scrollbar {
+            display: none;
           }
-          #pricing [style*="grid-template-columns: repeat(4"] {
-            grid-template-columns: 1fr !important;
+          .pricing-scroll-row > * {
+            min-width: 260px;
+            max-width: 280px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+          }
+          /* Scroll fade hint on the right edge */
+          .pricing-scroll-wrap {
+            position: relative;
+          }
+          .pricing-scroll-row::after {
+            content: '';
+            min-width: 1px;
+            flex-shrink: 0;
+          }
+          .swipe-hint {
+            display: inline-flex !important;
           }
         }
       `}</style>

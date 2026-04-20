@@ -27,7 +27,7 @@ export default function HeroSection() {
         overflow: "hidden",
       }}
     >
-      {/* 2x2 Mosaic Background */}
+      {/* 2x2 Mosaic Background (desktop) / 3 stacked (mobile) */}
       <div
         className="hero-mosaic"
         style={{
@@ -39,7 +39,7 @@ export default function HeroSection() {
         }}
       >
         {heroImages.map((src, i) => (
-          <div key={i} style={{ position: "relative", overflow: "hidden" }}>
+          <div key={i} className={`hero-img hero-img-${i}`} style={{ position: "relative", overflow: "hidden" }}>
             <img
               src={src}
               alt=""
@@ -47,7 +47,7 @@ export default function HeroSection() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                objectPosition: "center",
+                objectPosition: i === 3 ? "top" : "center",
                 display: "block",
               }}
             />

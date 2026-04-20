@@ -113,6 +113,7 @@ export default function ContactSection() {
         <div className="two-col-grid-contact">
           {/* Left: Contact Details */}
           <motion.div
+            className="contact-details"
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.65 }}
@@ -286,6 +287,7 @@ export default function ContactSection() {
 
           {/* Right: Form */}
           <motion.div
+            className="contact-form"
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.65, delay: 0.1 }}

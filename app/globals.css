@@ -221,10 +221,14 @@ body {
     padding-bottom: 64px !important;
   }
 
-  /* Hero: single column of 2 images on mobile */
+  /* Hero: 3 stacked images on mobile, hide 4th */
   .hero-mosaic {
     grid-template-columns: 1fr !important;
-    grid-template-rows: 1fr 1fr !important;
+    grid-template-rows: 1fr 1fr 1fr !important;
+  }
+
+  .hero-img-3 {
+    display: none;
   }
 
   /* About: shorter image on mobile */
@@ -266,6 +270,15 @@ body {
   #classes .class-meta {
     flex-direction: column !important;
     gap: 8px !important;
+  }
+
+  /* Contact: form first on mobile */
+  .contact-form {
+    order: -1;
+  }
+
+  .contact-details {
+    order: 1;
   }
 
   /* Footer: center-align and stack */
